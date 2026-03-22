@@ -122,17 +122,4 @@ Transformaciones eficientes con complejidad O(n).
 
 ---
 
-## ▶️ Cómo ejecutar
-
-1. Clonar el repositorio:
-
-```bash
-git clone <URL_DEL_REPOSITORIO>
-```
-
-2. Ejecutar el archivo:
-
-```bash
-python archivo.py
-```
 
