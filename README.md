@@ -1,125 +1,73 @@
-# 📊 Proyecto: Análisis y Simulación de Sistemas Computacionales
+
+# 📊 Arreglos Multidimensionales
 
 ## 📌 Descripción
 
-Este proyecto implementa diferentes problemas computacionales relacionados con:
-
-* Análisis de fuerzas en estructuras
-* Simulación de difusión en fluidos 3D
-* Procesamiento de imágenes (suavizado)
-* Análisis estadístico de sensores
-* Transformaciones geométricas
-
-Cada problema fue resuelto utilizando estructuras de datos como listas, matrices 2D y 3D, junto con algoritmos de recorrido y cálculo numérico.
+Cinco problemas de ingeniería resueltos con matrices 2D y 3D en Python puro (sin dependencias externas).
 
 ---
 
-## 🧠 Enfoque de solución
+## ⚙️ Problemas Resueltos
 
-El enfoque principal utilizado en todos los problemas es:
+### 1. Análisis de Fuerzas
+**Enfoque:** Matriz 3×3 con fuerzas. Sumatoria total y distribución equitativa en 4 apoyos.
 
-* Uso de **estructuras matriciales (listas anidadas)** para representar sistemas físicos
-* Aplicación de **algoritmos iterativos** (bucles) para recorrer datos
-* Uso de **promedios y operaciones matemáticas** para simular comportamientos físicos
-* Separación en funciones para mejorar la **modularidad y reutilización**
+**Eficiencia:** O(9) operaciones constantes. Al usar un tamaño fijo, el enfoque de recorrido completo no afecta el rendimiento.
 
 ---
 
-## ⚙️ Problemas implementados
+### 2. Simulación de Fluido 3D
+**Enfoque:** Volumen 3×3×3 donde cada celda almacena presión, temperatura y velocidad. Cada celda se actualiza por promedio de sus 26 vecinos, usando una copia independiente para evitar contaminación.
 
-### 🔹 Problema 1: Análisis de fuerzas
-
-Se calcula:
-
-* Suma de fuerzas por fila y columna
-* Fuerza total del sistema
-* Reacción necesaria para equilibrio
-
-📌 Enfoque:
-Uso de sumatorias y distribución uniforme.
+**Eficiencia:** O(27 × 26) por paso. El enfoque de promedios simples evita cálculos complejos (ecuaciones diferenciales), priorizando simplicidad sobre precisión física.
 
 ---
 
-### 🔹 Problema 2: Simulación de fluido 3D
+### 3. Suavizado de Imágenes
+**Enfoque:** Volumen 3 capas × 5×5 píxeles. Filtro de promedio 3×3 aplicado capa por capa, recorriendo toda la matriz.
 
-Se simula la propagación de presión en una matriz 3D.
-
-📌 Enfoque:
-
-* Cada celda toma el promedio de sus vecinos
-* Se usa copia de la matriz para evitar sobreescritura
-
-📌 Impacto en eficiencia:
-Complejidad O(N³), ya que se recorren todas las celdas del volumen.
+**Eficiencia:** O(75 × 9). El enfoque capa por capa permite procesamiento independiente, lo que facilita futura paralelización.
 
 ---
 
-### 🔹 Problema 3: Suavizado de imágenes 3D
+### 4. Análisis de Sensores
+**Enfoque:** Matriz 5×5. Cálculo de promedio y desviación estándar por filas y columnas mediante recorrido completo.
 
-Se reduce el ruido aplicando un filtro de promedio.
-
-📌 Enfoque:
-
-* Promedio de vecinos (incluyendo la celda central)
-* Técnica similar a filtros en procesamiento de imágenes
-
-📌 Impacto:
-Reduce variaciones bruscas → mejora calidad de datos.
+**Eficiencia:** O(25). El enfoque de dos pasadas (una para promedio, otra para varianza) es aceptable para este tamaño, pero sería ineficiente para matrices grandes.
 
 ---
 
-### 🔹 Problema 4: Análisis de sensores
+### 5. Transformación de Coordenadas
+**Enfoque:** Puntos 2D almacenados en lista. Transformaciones mediante matrices (rotación) y operaciones directas (traslación, escalado).
 
-Se calculan:
-
-* Promedios
-* Desviación estándar
-
-📌 Enfoque:
-Uso de fórmulas estadísticas básicas.
-
-📌 Impacto:
-Permite analizar estabilidad y variabilidad de los datos.
+**Eficiencia:** O(n) por transformación. El enfoque de aplicar la misma operación a cada punto independientemente permite escalamiento lineal.
 
 ---
 
-### 🔹 Problema 5: Transformación de coordenadas
+## 🎯 Impacto del Enfoque en la Eficiencia
 
-Se aplica rotación a puntos en 2D.
-
-📌 Enfoque:
-Uso de matrices de rotación:
-
-```
-[cos -sin]
-[sin  cos]
-```
-
-📌 Impacto:
-Transformaciones eficientes con complejidad O(n).
+| Problema | Enfoque Elegido | Impacto en Eficiencia |
+|----------|----------------|----------------------|
+| **1** | Sumatoria directa | Mínimo overhead, ideal para matrices pequeñas |
+| **2** | Promedio de vecinos | Evita cálculo de ecuaciones diferenciales; sacrifica precisión por velocidad |
+| **3** | Procesamiento por capas | Permite paralelización potencial; independencia entre capas |
+| **4** | Recorrido completo | Aceptable para 5×5; no escalable a grandes volúmenes de datos |
+| **5** | Operaciones independientes | Escala lineal O(n); ideal para conjuntos de puntos grandes |
 
 ---
 
-## 🚀 Eficiencia de la solución
+## 🛠️ Tecnologías
 
-* Uso de listas y comprensión de listas mejora legibilidad
-* Evita estructuras innecesarias
-* Se minimiza duplicación de código
-* Complejidad dominante:
-
-  * Problemas 2 y 3: O(N³)
-  * Problemas 1, 4 y 5: O(N²) o menor
-
----
-
-## 🛠️ Tecnologías usadas
-
-* Python 3
-* Librerías estándar:
-
-  * `math`
-  * `random`
-
----
+- Python 3
+- Librerías estándar: `math`, `random`
 
 
+## 📊 Resultados
+
+| Problema | Estado |
+|----------|--------|
+| 1. Fuerzas | ✓ Equilibrio logrado |
+| 2. Fluido | ✓ Propagación simulada |
+| 3. Imágenes | ✓ Ruido reducido |
+| 4. Sensores | ✓ Estadísticas calculadas |
+| 5. Coordenadas | ✓ Transformaciones aplicadas |
