@@ -136,10 +136,3 @@ git clone <URL_DEL_REPOSITORIO>
 python archivo.py
 ```
 
----
-
-## 👨‍💻 Autor
-
-* Tu nombre aquí
-
----
