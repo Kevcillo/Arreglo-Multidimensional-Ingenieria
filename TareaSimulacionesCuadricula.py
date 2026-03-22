@@ -270,5 +270,5 @@ dibujar_puntos(puntos, "Original:")
 dibujar_puntos(rotados, "Rotado 45°:")
 
 print("\n" + "="*50)
-print("✓ TODOS LOS PROBLEMAS RESUELTOS (VERSIÓN SIMPLIFICADA)")
+print("✓ TODOS LOS PROBLEMAS RESUELTOS")
 print("="*50)
